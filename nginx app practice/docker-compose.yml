@@ -1,0 +1,17 @@
+version: '3'
+services:
+ nginxservice:
+  build: .
+  image: nginxnewimage
+  container_name: nginxcontainer
+  ports:
+   - '6097:80'
+  volumes:
+   - nginxvolume:/usr/share/nginx/html
+  networks:
+   - nginxnetwork
+volumes:
+ nginxvolume:
+networks:
+ nginxnetwork:
+  driver: bridge

@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  registry_service:
+    image: registry:2
+    container_name: local_registry
+    ports:
+      - '5000:5000'
+  frontend_service:
+    build: .
+    image: localhost:5000/frontend_img
+    container_name: frontend_container
+    ports:
+      - '5067:5067'
+    networks:
+      - app_network
+  backend_service:
+    image: redis:alpine
+    container_name: backend_container
+    networks:
+      - app_network    
+    
+networks:
+  app_network:
+    driver: bridge

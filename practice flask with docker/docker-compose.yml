@@ -1,0 +1,19 @@
+version: '3'
+services:
+  myapp:
+    build: .
+    image: flaskimage
+    container_name: flaskcontainer
+    ports: 
+      - '5025:5005'
+      - '5026:5005'
+    volumes: 
+      - flaskvolume:/app
+    networks: 
+      - flasknetwork
+networks:
+  flasknetwork:
+    driver: bridge
+volumes:
+  flaskvolume:
+    

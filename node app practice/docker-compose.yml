@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mynodeapp:
+    build: .
+    image: nodeappimage
+    container_name: nodeappcontainer
+    ports:
+      - 3003:7000
+    volumes:
+      - nodevolume:/usr/src/app
+    networks:
+      - nodenetwork
+volumes:
+  nodevolume:
+networks:
+  nodenetwork:
+    driver: bridge

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-statefulset
+  namespace: web
+  labels:
+    app: db-mysql
+spec:
+  serviceName: db
+  replicas: 3
+  selector:
+    matchLabels:
+      app: db-mysql
+  template:
+    metadata:
+      labels:
+        app: db-mysql
+    spec:
+      containers:
+        - name: db-container
+          image: mysql:5.6
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: db-persistent-storage
+              mountPath: /app
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: deploy-secret
+                  key: password
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: deploy-secret
+                  key: username
+            - name: MYSQL_DATABASE
+              value: db_application    
+  volumeClaimTemplates:
+    - metadata:
+        name: db-persistent-storage
+        labels:
+          app: db-mysql
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi 

@@ -1,0 +1,4 @@
+FROM nginx
+COPY index.html /usr/share/nginx/html/index.html
+# EXPOSE 80 (THIS WILL ONLY WORK ON PORT 80 FROM CONTAINER , EVEN IF WE DONT GIVE OR GIVE PORT HERE IT WILL TAKE 80 AS DEFAULT AND WONT WORK FOR OTHER)
+CMD ["nginx", "-g", "daemon off;"]

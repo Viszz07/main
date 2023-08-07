@@ -1,0 +1,3 @@
+run vscode as admin
+eval $(minikube docker-env) in bash
+build the image
