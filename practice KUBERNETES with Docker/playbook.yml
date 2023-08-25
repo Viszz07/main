@@ -1,0 +1,7 @@
+- name: Deploy Kubernetes Resources
+  hosts: localhost
+  tasks:
+    - name: Apply Kubernetes YAML files
+      k8s:
+        src: ns.yml
+        state: present

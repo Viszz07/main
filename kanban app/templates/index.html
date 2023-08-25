@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kanban Board</title>
+</head>
+<body>
+    <h1>Kanban Board</h1>
+    
+    <form action="/add_task" method="post">
+        <input type="text" name="task_name" placeholder="Task name">
+        <select name="status">
+            <option value="todo">To Do</option>
+            <option value="in_progress">In Progress</option>
+            <option value="done">Done</option>
+        </select>
+        <button type="submit">Add Task</button>
+    </form>
+    
+    {% for status, task_list in tasks.items() %}
+        <div>
+            <h2>{{ status|title }}</h2>
+            <ul>
+                {% for task in task_list %}
+                    <li>{{ task }}</li>
+                {% endfor %}
+            </ul>
+            <form action="/move_task" method="post">
+                <input type="hidden" name="task_name" value="{{ task }}">
+                <input type="hidden" name="current_status" value="{{ status }}">
+                <select name="new_status">
+                    <option value="todo">To Do</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                <button type="submit">Move</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>

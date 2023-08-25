@@ -1,0 +1,17 @@
+version: '3'
+services:
+ kanbanservice:
+  build: .
+  container_name: kanbancontainer
+  image: kanbanimage
+  ports:
+   - '5000:5005'
+  networks:
+   - kanbannetwork
+  volumes:
+   - kanbanvolume:/app
+networks:
+ kanbannetwork:
+  driver: bridge
+volumes:
+ kanbanvolume:

@@ -1,0 +1,13 @@
+version: '3'
+services: 
+ pytestservice:
+  build: .
+  image: pytestimage
+  container_name: pytestcontainer
+  ports:
+   - 5000:5000
+  networks:
+   - pytestnetwork
+networks:
+ pytestnetwork:
+  driver: bridge

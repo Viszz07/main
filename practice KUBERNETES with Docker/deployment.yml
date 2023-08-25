@@ -20,5 +20,5 @@ spec:
           image: webapp-img:latest
           imagePullPolicy: Never
           ports:
-            - containerPort: 5005
+            - containerPort: 5000
 
