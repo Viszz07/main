@@ -1,0 +1,14 @@
+apply plugin: 'java'
+/*repositories {
+    mavenCentral()    
+}
+
+dependencies {
+    // No additional dependencies are needed for this example
+}
+*/
+jar {
+    manifest {
+        attributes 'Main-Class': 'HelloWorldApp'
+    }
+}

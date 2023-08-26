@@ -1,0 +1,16 @@
+version: '3'
+services:
+ gradleservice:
+  build: .
+  image: gradleimage
+  container_name: gradlecontainer
+  ports:
+   - 8001:8001
+  networks:
+   - gradlenetwork
+  volumes:
+   - gradlevolume:/app
+volumes:
+ gradlevolume:
+networks:
+ gradlenetwork:
