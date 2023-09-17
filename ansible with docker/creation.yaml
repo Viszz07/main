@@ -45,3 +45,4 @@
          container_name: postgres_container
          ports:
           - '5476:5432'
+      dest: ./docker-compose.yaml
