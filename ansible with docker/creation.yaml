@@ -1,0 +1,47 @@
+- name: creation of dockerfile and dockercompose files
+  hosts: localhost
+  tasks:
+   - name: create flask dockerfile
+     file:
+      path: ./Dockerfile_flask
+      state: touch
+   - name: copy contents in dockerfile
+     copy:
+      content: |
+       FROM python:3.10-alpine
+       WORKDIR /app
+       COPY app.py app.py
+       COPY requirements.txt requirements.txt
+       RUN pip install -r requirements.txt
+       EXPOSE 5000
+       CMD python app.py
+      dest: ./Dockerfile_flask
+   - name: create postgres dockerfile
+     file:
+      path: ./Dockerfile_postgres
+      state: touch
+   - name: copy contents in dockerfile
+     copy:
+      content: |
+       FROM postgres
+       EXPOSE 5476
+      dest: ./Dockerfile_postgres
+   - name: create docker-compose
+     file:
+      path: ./docker-compose.yaml
+      state: touch
+   - name: add contents in dockercompose
+     copy:
+      content: |
+       version: '3'
+       services:
+        flask:
+         image: flask_image
+         container_name: flask_container
+         ports:
+          - '5000:5000'
+        db:
+         image: postgres_image
+         container_name: postgres_container
+         ports:
+          - '5476:5432'

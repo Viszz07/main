@@ -1,0 +1,12 @@
+You are a senior devops engineer you are given a task 
+1. Create a task named Installation in /etc/ansible/roles and it should install docker-compose 
+2. You have a basic app.py file which prints hello world and it's port is 5000 and you 
+   have a requirements.txtwhichhas flask as a requirement . 
+3. Create a creation.yaml file to create a dockerfile with base image as python alpine and use file and 
+   copy modules with the app.py and requirements.txt and expose to port 5000 
+4. In that same creation.yaml create a dockerfile for postgres as base image and expose it to port 5476
+5. Create a execution.yaml file in which import the creation.yaml file to run and also use the role
+   created earlier and create flask_img and postgres_img using the dockerfile created earlier 
+6. Create a docker-compose file using the execution.yaml where it should have two services flask service and 
+   db service and they should use the flask image and postgres image create in step 5 and it should deploy 
+   on port 5000

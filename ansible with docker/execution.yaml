@@ -1,0 +1,24 @@
+- name: execute all commands
+  hosts: localhost
+  roles:
+   - Installation
+  tasks:
+   - name: use creation file
+     command: sudo ansible-playbook creation.yaml
+   - name: create flask image
+     docker_image:
+      name: flask_image
+      build:
+       path: .
+       dockerfile: ./Dockerfile_flask
+      state: present
+   - name: create postgres image
+     docker_image:
+      name: postgres_image
+      build:
+       path: .
+       dockerfile: ./Dockerfile_postgres
+      state: present
+   - name: deploy all usuing docker docker-compose
+     command: sudo docker-compose up -d
+        
