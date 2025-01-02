@@ -14,3 +14,4 @@ volumes:
  gradlevolume:
 networks:
  gradlenetwork:
+  driver: bridge
