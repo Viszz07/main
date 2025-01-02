@@ -1,0 +1,8 @@
+version: '3'
+services:
+ nginxservice:
+  build: .
+  image: nginxnewimage
+  container_name: nginxcontainer
+  ports:
+   - 5000:80

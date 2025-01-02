@@ -1,0 +1,10 @@
+services:
+ app:
+  extends: 
+   service: nginxservice
+   file: configuration.yml
+  networks:
+   - nginxnetwork
+networks:
+ nginxnetwork:
+  driver: bridge

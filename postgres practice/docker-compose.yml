@@ -1,0 +1,10 @@
+version: '3'
+services:
+ postgresservice:
+  build: .
+  image: postgresimage
+  container_name: postgrescontainer
+  ports:
+   - 5476:5432
+  environment:
+      - POSTGRES_PASSWORD=1234vishal
