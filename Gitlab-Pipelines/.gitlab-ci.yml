@@ -1,0 +1,16 @@
+stages:
+  - buildpush
+  
+Build_image:
+  stage: buildpush
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u viszz07 -p $DockerPassword
+  script:
+    - cd ./Python-app
+    - docker build -t pythonapp:1 .
+    - docker tag pythonapp:1 $DockerHubRepo:latest
+    - docker push $DockerHubRepo:latest
+

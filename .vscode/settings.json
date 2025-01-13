@@ -2,5 +2,6 @@
     "java.project.sourcePaths": [
         "maven_practice"
     ],
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "ansible.python.interpreterPath": "c:\\Users\\Vishal Thorat\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
 }
